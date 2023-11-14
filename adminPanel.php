@@ -44,6 +44,12 @@ if (!isset($_SESSION['usuario'])) {
       <a href="crear-campos-tipodeclaracion.php">Crear</a>
     </div>
 
+    <div class="col-sm-4">
+      <h3>Crear campos tipo instalación</h3>        
+      <p>Agrega o elimina campos de la tabla</p>
+      <a href="crear-campos-tipoinstalacion.php">Crear</a>
+    </div>
+
   </div>
 </div>
 
