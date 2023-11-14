@@ -39,9 +39,9 @@ if (!isset($_SESSION['usuario'])) {
     </div>
 
     <div class="col-sm-4">
-      <h3>Column 3</h3>        
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
-      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+      <h3>Crear campos tipo declaración</h3>        
+      <p>Agrega o elimina campos de la tabla</p>
+      <a href="crear-campos-tipodeclaracion.php">Crear</a>
     </div>
 
   </div>
