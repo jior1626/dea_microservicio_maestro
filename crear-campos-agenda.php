@@ -88,7 +88,7 @@ if (!$dataResult) {
 </div>
 
 <div class="container">
-        <h2>Tabla DEA</h2>
+        <h2>Tabla Agenda</h2>
         <table class="table table-bordered">
             <thead>
                 <tr>

@@ -56,6 +56,12 @@ if (!isset($_SESSION['usuario'])) {
       <a href="crear-campos-agenda.php">Crear</a>
     </div>
 
+    <div class="col-sm-4">
+      <h3>Crear campos planes</h3>        
+      <p>Agrega o elimina campos de la tabla</p>
+      <a href="crear-campos-planes.php">Crear</a>
+    </div>
+
   </div>
 </div>
 
