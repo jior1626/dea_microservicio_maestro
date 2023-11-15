@@ -10,6 +10,8 @@ try {
     }
 
     echo "Campos agregados exitosamente.";
+    header('Location: adminPanel.php');
+        exit;
 } catch (Exception $e) {
     echo "Error al agregar campos: " . $e->getMessage();
 }
