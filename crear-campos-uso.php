@@ -7,6 +7,29 @@ if (!isset($_SESSION['usuario'])) {
     header("Location: index.php"); // Redirige al usuario a la página de login
     exit(); // Termina la ejecución del script
 }
+
+include 'Database.php';
+$db = new Database();
+$conn = $db->getConnection();
+
+// Obtener los nombres de las columnas
+$columnQuery = "SELECT column_name FROM information_schema.columns WHERE table_name = 'tbl_uso'";
+$columnResult = pg_query($conn, $columnQuery);
+
+$columns = [];
+while ($row = pg_fetch_assoc($columnResult)) {
+    $columns[] = $row['column_name'];
+}
+
+// Obtener los datos de la tabla
+$dataQuery = "SELECT * FROM TBL_USO";
+$dataResult = pg_query($conn, $dataQuery);
+
+if (!$dataResult) {
+    echo "An error occurred.\n";
+    exit;
+}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -44,6 +67,7 @@ if (!isset($_SESSION['usuario'])) {
     </script>
 </head>
 <body>
+
 <div class="container">
     <h1>Crear Campo Dinámico</h1>
     <form action="procesar-uso.php" method="post">
@@ -55,5 +79,31 @@ if (!isset($_SESSION['usuario'])) {
         <input type="submit" class="btn btn-info" value="Crear Campo">
     </form>
 </div>
+
+<div class="container">
+        <h2>Tabla DEA</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <?php foreach ($columns as $columnName): ?>
+                        <th><?php echo htmlspecialchars($columnName); ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                while ($row = pg_fetch_assoc($dataResult)) {
+                    echo "<tr>";
+                    foreach ($columns as $columnName) {
+                        echo "<td>" . htmlspecialchars($row[$columnName]) . "</td>";
+                    }
+                    echo "</tr>";
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+
+    
 </body>
 </html>
